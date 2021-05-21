@@ -1,0 +1,73 @@
+ Jenkins pipeline code to download and create Oracle Database 19c 
+
+pipeline {
+    agent { label 'techdabasketserver19c’ }
+    stages {
+            stage ('Download Required RPM') {
+            steps { 
+                echo 'Download both Oracle Preinstallation and Oracle Database RPM packages'
+                sh script: "sudo su - root bash -c 'curl -o oracle-database-preinstall-19c-1.0-1.el7.x86_64.rpm https://yum.oracle.com/repo/OracleLinux/OL7/latest/x86_64/getPackage/oracle-database-preinstall-19c-1.0-1.el7.x86_64.rpm'"
+                  }
+
+                                             }
+		    stage ('Perform the Installation of  Required RPM') {
+            steps { 
+                echo 'Install RPM packages'
+                sh script: "sudo su - root bash -c 'yum -y install oracle-database-preinstall-19c'"
+                  }
+
+                                                                  }
+
+           stage ('Install Database Software') {
+            steps { 
+                echo 'Install Oracle Oracle RDBMS software'
+
+                sh script: "sudo su - root bash -c 'cd /tmp; yum -y localinstall /u01/stage/oracle-database-ee-19c-1.0-1.x86_64.rpm'"
+                  }
+
+                                               }
+           stage ('Create Database') {
+             steps { 
+                 echo 'Creating Oracle Database'
+                  sh script: "sudo su - root bash -c '/etc/init.d/oracledb_ORCLCDB-19c configure'"
+                   }
+                                      }
+          }
+}
+
+·        Jenkins pipeline code to download and create Oracle Database 18c 
+
+pipeline {
+    agent { label 'techdabasketserver18c’ }
+    stages {
+            stage ('Download Required RPM') {
+            steps { 
+                echo 'Download both Oracle Preinstallation and Oracle Database RPM packages'
+                sh script: "sudo su - root bash -c 'curl -o oracle-database-preinstall-18c-1.0-1.el7.x86_64.rpm https://yum.oracle.com/repo/OracleLinux/OL7/latest/x86_64/getPackage/oracle-database-preinstall-18c-1.0-1.el7.x86_64.rpm'"
+                  }
+
+                                             }
+		    stage ('Perform the Installation of  Required RPM') {
+            steps { 
+                echo 'Install RPM packages'
+                sh script: "sudo su - root bash -c 'yum -y install oracle-database-preinstall-18c'"
+                  }
+
+                                                                  }
+
+           stage ('Install Database Software') {
+            steps { 
+                echo 'Install Oracle Oracle RDBMS software'
+
+                sh script: "sudo su - root bash -c 'cd /tmp; yum -y localinstall /u01/stage/oracle-database-ee-18c-1.0-1.x86_64.rpm'"
+                  }
+
+                                               }
+           stage ('Create Database') {
+             steps { 
+                 echo 'Creating Oracle Database'
+                  sh script: "sudo su - root bash -c '/etc/init.d/oracledb_ORCLCDB-18c configure'"
+                   }
+                                      }
+          }
+}
