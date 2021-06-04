@@ -1,0 +1,3 @@
+alter user SYS identified by Marvel291;
+alter user SYSTEM identified by Marvel291;
+alter user DBSNMP identified by Marvel291;
