@@ -18,7 +18,7 @@
 
   vars:
     cdb_name: "tech"
-    syspass: "Bangla123"
+    syspass: "Marvel29"
     oracle_home: "/home/oracle/Downloads"
     root_user: root
     oracle_user: oracle
